@@ -20,7 +20,7 @@ Parameters:
   GitHubRepo:
     Type: String
     Default: timeoff-management-application
-    Description: repository of the application
+    Description: repository of the application.
 
   GitHubBranch:
     Type: String
@@ -30,9 +30,52 @@ Parameters:
   GitHubToken:
     Type: String
     NoEcho: true
-    Description: GitHub token from developer settings
+    Description: GitHub token from developer settings.
 
   TemplateBucket:
     Type: String
     Default: dc-aws-cloudformation-ecs
-    Description: bucket for the templates
+    Description: bucket for the templates.
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParatemerLabels:
+      GitHubUser:
+        default: "User"
+      GitHubRepo:
+        default: "Repo"
+      GitHubBranch:
+        default: "Branch"
+      GitHubToken:
+        default: "Personal GitHub Token"
+      LaunchType:
+        default: "Launch Type"
+    ParametersGroups:
+      - Label:
+          default: Cluster configuration
+        Parameters:
+          - LaunchType
+      - Label:
+          default: GitHub configuration
+        Parameters:
+          - GitHubRepo
+          - GitHubUser
+          - GitHubToken
+          - GitHubBranch
+      - Label:
+          default: Stack configuration
+        Parameters:
+          - TemplateBucket
+
+Resources:
+  DeploymentPipeline:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Sub "https://s3.amazonaws.com/${TemplateBucket}/templates/deployment-pipeline.yml"
+      Parameters:
+        Cluster: !GetAtt Cluster.Outputs.ClusterName
+        Service: !GetAtt Service.Outputs.Service
+        GitHubUser: !Ref GitHubUser
+        GitHubToken: !Ref GitHubToken
+        GitHubRepo: !Ref GitHubRepo
+        GitHubBranch: !Ref GitHubBranch
