@@ -1,0 +1,38 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >
+  This template will deploy the services required to run an application
+  using GitHub as Code repository, AWS CodePipeline and AWS CodeBuild to
+  Build and Deploy, And AWS ECS Fargate and AWS ALB.
+
+Parameters:
+  LaunchType:
+    Type: String
+    Default: Fargate
+    AllowedValues:
+      - Fargate
+
+  GitHubUser:
+    Type: String
+    Description: Your username in GitHub.
+
+  GitHubRepo:
+    Type: String
+    Default: timeoff-management-application
+    Description: repository of the application
+
+  GitHubBranch:
+    Type: String
+    Default: master
+    Description: branch of the repository for CD.
+
+  GitHubToken:
+    Type: String
+    NoEcho: true
+    Description: GitHub token from developer settings
+
+  TemplateBucket:
+    Type: String
+    Default: dc-aws-cloudformation-ecs
+    Description: bucket for the templates
