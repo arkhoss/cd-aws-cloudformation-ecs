@@ -27,11 +27,11 @@ docker tag timeoff-management-application:latest ***REMOVED***.dkr.ecr.us-east-1
 docker push ***REMOVED***.dkr.ecr.us-east-1.amazonaws.com/timeoff-management-application:latest
 ```
 
-Then proceed to deploy the Application with the CloudFormation Template below, click the rocket!:
+Then proceed to deploy the Application with the CloudFormation Template below, click the rocket!
 
 Deploy | Region Name | Region | Launch Types
 :---: | ------------ | ------------- | -------------
-[🚀][us-east-1] | US East (N. Virginia) | us-east-1 | Fargate, EC2
+[🚀][us-east-1] | US East (N. Virginia) | us-east-1 | Fargate
 
 [us-east-1]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=ECS-ContinuousDeployment&templateURL=https://s3.amazonaws.com/cd-aws-cloudformation-ecs/cd-aws-cloudformation-ecs.yml&param_LaunchType=Fargate
 
