@@ -34,7 +34,7 @@ Parameters:
 
   TemplateBucket:
     Type: String
-    Default: dc-aws-cloudformation-ecs
+    Default: cd-aws-cloudformation-ecs
     Description: bucket for the templates.
 
 Metadata:
