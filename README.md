@@ -1,5 +1,5 @@
 # cd-aws-cloudformation-ecs
-cd-aws-cloudformation-ecs
+cd-aws-cloudformation-ecs demo
 
 Deploy | Region Name | Region | Launch Types
 :---: | ------------ | ------------- | -------------
