@@ -22,9 +22,9 @@ $(aws ecr get-login --no-include-email --region us-east-1)
 
 docker build -t timeoff-management-application .
 
-docker tag timeoff-management-application:latest ***REMOVED***.dkr.ecr.us-east-1.amazonaws.com/timeoff-management-application:latest
+docker tag timeoff-management-application:latest ${AWS-AccountId}.dkr.ecr.us-east-1.amazonaws.com/timeoff-management-application:latest
 
-docker push ***REMOVED***.dkr.ecr.us-east-1.amazonaws.com/timeoff-management-application:latest
+docker push ${AWS-AccountId}dkr.ecr.us-east-1.amazonaws.com/timeoff-management-application:latest
 ```
 
 Then proceed to deploy the Application with the CloudFormation Template below, click the rocket!
