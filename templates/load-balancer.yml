@@ -58,10 +58,10 @@ Resources:
       HealthCheckProtocol: HTTP
       HealthCheckTimeoutSeconds: 5
       HealthyThresholdCount: 2
-      TargetType: !If [ EC2, "instance", "ip" ]
       TargetGroupAttributes:
         - Key: deregistration_delay.timeout_seconds
           Value: 30
+      TargetType: ip
 
   ListenerRule:
     Type: AWS::ElasticLoadBalancingV2::ListenerRule
